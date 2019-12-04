@@ -1,4 +1,5 @@
 set backupcopy=yes
+:set backupcopy=yes 
 set clipboard^=unnamed
 set termguicolors
 
@@ -168,13 +169,37 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
 Plug 'luochen1990/rainbow'
+Plug 'easymotion/vim-easymotion'
 let g:rainbow_active = 1
+
+      Plug 'cloudhead/neovim-fuzzy'
 
 call plug#end()
 
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['~/reason-language-server/reason-language-server.exe'],
     \ }
+
+nnoremap <C-p> :FuzzyOpen<CR>
+
+
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>f <Plug>(easymotion-bd-f)
+map <Leader>t <Plug>(easymotion-bd-t)
+map <Leader>/ <Plug>(easymotion-jumptoanywhere)
+
+let g:EasyMotion_startofline = 0
+
 
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
